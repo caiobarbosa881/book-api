@@ -9,6 +9,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 .request-container{
     background-color: white;
@@ -31,6 +32,7 @@ h3{
     color: white;
 }
 .register-container{
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     background-color: #156F6C;
     height: 330px;
     width: 400px;
@@ -58,4 +60,9 @@ h3{
     height: 50px;
     margin: auto;
     font-size: 14px;
+}
+.search-icon{
+    float: right;
+    width: 30px;
+    height: 30px;
 }

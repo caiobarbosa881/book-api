@@ -1,5 +1,5 @@
 import './App.css';
-import CadForm from './components/CadForm.js'
+import CadForm from './components/CadForm.js';
 
 function App() {
   return (
