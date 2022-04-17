@@ -1,10 +1,13 @@
 import './App.css';
-import CadForm from './components/CadForm.js';
+import Quotes from './Quotes';
+import React from 'react';
 
 function App() {
   return (
     <div className="App">
-      <CadForm/>
+      <header className="App-header">
+        <Quotes />
+      </header>
     </div>
   );
 }
