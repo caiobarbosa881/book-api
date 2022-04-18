@@ -1,13 +1,13 @@
 import './App.css';
 import Quotes from './Quotes';
 import React from 'react';
+import CadForm from './components/CadForm';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+        <CadForm/>
         <Quotes />
-      </header>
     </div>
   );
 }

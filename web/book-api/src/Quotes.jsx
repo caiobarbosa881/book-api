@@ -6,7 +6,7 @@ function Quotes() {
 
   function getQuote() {
     axios.get("http://localhost:5000/",  { crossdomain: true }).then(response => {
-      setLivro(response.quotes);
+      setLivro(response.data);
     });
 }
 
