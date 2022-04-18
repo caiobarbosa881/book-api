@@ -1,21 +1,34 @@
 import React from 'react'
 import './CadForm.css'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function CadForm() {
+
+  const [livro, setLivro] = useState("");
+  const [form, setForm] = useState("form-container scale-zero");
+
+useEffect(() =>{
+  setForm("form-container scale-full")
+}, [form]);
+
+
+  function getValues() {
+    axios.get("http://localhost:5000/",  { crossdomain: true }).then(response => {
+      setLivro(response.data);
+    });
+}
+
   return (
     <>
     <div className='register-container'>
         <h3 className='mt-3'>Registrar Livros</h3>
-        <input className="form-control request-input w-75 mt-3" type="text" placeholder="Insira o Nome do Livro"/>
-        <input className="form-control request-input w-75 mt-3" type="text" placeholder="Insira o Autor"/>
-        <input className="form-control request-input w-75 mt-3" type="number" placeholder="Insira o número de Páginas"/>
-        <button type="button" className="btn btn-primary mt-3 request-button">Enviar</button>
+        <h1>{livro}</h1>
     </div>
 
-    <div className='form-container'>
+    <div className={form}>
         <h3 className='mt-3'>Consultar Livros</h3>
-        <input className="form-control request-input w-75 mt-3" type="text" placeholder="Insira o Nome do Livro para consultar"/>
-        <button type="button" className="btn btn-primary mt-3 request-button">Consultar</button>
+        <button type="button" onClick={getValues} className="btn btn-primary mt-3 request-button">Consultar</button>
     </div>
     </>  
   )
