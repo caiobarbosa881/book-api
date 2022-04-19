@@ -5,11 +5,11 @@ import axios from 'axios';
 
 function CadForm() {
 
-  const [livro, setLivro] = useState("");
-  const [form, setForm] = useState("form-container scale-zero");
+  const [livro, setLivro] = useState([]);
+  const [form, setForm] = useState("form-container scalex-zero");
 
 useEffect(() =>{
-  setForm("form-container scale-full")
+  setForm("form-container scalex-full")
 }, [form]);
 
 

@@ -3,10 +3,11 @@ var cors = require('cors')
 const app = express();
 app.use(cors())
 
-const db = "ola"
+const db = "Projeto em andamento";
+
 
 app.get("/", function(req, res) {
-  res.send(db);
+  return res.json(db);
 });
 
 let port = process.env.PORT;
