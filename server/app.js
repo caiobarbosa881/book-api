@@ -3,8 +3,10 @@ var cors = require('cors')
 const app = express();
 app.use(cors())
 
-const db = "Projeto em andamento";
-
+const db = [
+  { name: "ronaldo"},
+  { name: "cleber"}
+];
 
 app.get("/", function(req, res) {
   return res.json(db);

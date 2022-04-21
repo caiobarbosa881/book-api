@@ -5,19 +5,31 @@ import axios from 'axios';
 
 function CadForm() {
 
-  const [livro, setLivro] = useState([]);
+  const [livro, setLivro] = useState();
   const [form, setForm] = useState("form-container scalex-zero");
+  const [input, setInput] = useState();
+
+  const inputValue = document.getElementById("inputName");
 
 useEffect(() =>{
   setForm("form-container scalex-full")
 }, [form]);
 
+  const handleInput = event => {
+    setInput(event.target.value);
+    console.log(event.target.value)
+  }
 
   function getValues() {
-    axios.get("http://localhost:5000/",  { crossdomain: true }).then(response => {
+    axios
+    .get("http://localhost:5000/")
+    .then((response) => {
+      console.log(Array.from(response.data))
+      let bookData = response.data
+      
       setLivro(response.data);
-    });
-}
+    })
+  }
 
   return (
     <>
@@ -28,6 +40,7 @@ useEffect(() =>{
 
     <div className={form}>
         <h3 className='mt-3'>Consultar Livros</h3>
+        <input onChange={handleInput} id="inputName"></input>
         <button type="button" onClick={getValues} className="btn btn-primary mt-3 request-button">Consultar</button>
     </div>
     </>  
