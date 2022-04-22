@@ -11,10 +11,15 @@ function CadForm() {
   const [form, setForm] = useState("form-container scalex-zero");
   const [input, setInput] = useState();
   const inputValue = document.getElementById("inputName");
+  const [list, setList] = useState("list-container scalex-zero");
 
 useEffect(() =>{
-  setForm("form-container scalex-full")
+  setForm("form-container scalex-full");
 }, [form]);
+
+useEffect(() =>{
+  setList("list-container scalex-full");
+}, [list]);
 
   const handleInput = event => {
     setInput(event.target.value);
@@ -32,11 +37,12 @@ useEffect(() =>{
         }
       }
     })
+    setList("list-container scalex-zero");
   }
 
   return (
     <>
-    <div className='register-container'>
+    <div className={list}>
         <h3 className='mt-3'>Informações</h3>
         <h1 className='book-name'>{livro}</h1>
         <p>{autor}</p>
