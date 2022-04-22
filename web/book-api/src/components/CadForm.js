@@ -6,6 +6,8 @@ import axios from 'axios';
 function CadForm() {
 
   const [livro, setLivro] = useState();
+  const [autor, setAutor] = useState();
+  const [data, setData] = useState();
   const [form, setForm] = useState("form-container scalex-zero");
   const [input, setInput] = useState();
   const inputValue = document.getElementById("inputName");
@@ -16,17 +18,17 @@ useEffect(() =>{
 
   const handleInput = event => {
     setInput(event.target.value);
-    console.log(event.target.value)
   }
 
   function getValues() {
     axios
     .get("http://localhost:5000/")
     .then((response) => {
-      console.log(response.data[0].name)
       for(var i= 0; i < response.data.length; i++){
         if(response.data[i].name === inputValue.value){
           setLivro(inputValue.value);
+          setAutor(response.data[i].author);
+          setData(response.data[i].data);
         }
       }
     })
@@ -35,8 +37,10 @@ useEffect(() =>{
   return (
     <>
     <div className='register-container'>
-        <h3 className='mt-3'>Registrar Livros</h3>
-        <h1>{livro}</h1>
+        <h3 className='mt-3'>Informações</h3>
+        <h1 className='book-name'>{livro}</h1>
+        <p>{autor}</p>
+        <p>{data}</p>
     </div>
 
     <div className={form}>

@@ -31,8 +31,8 @@
 h3{
     color: white;
 }
-h1{
-    font-size: 70px;
+.book-name{
+    font-size: 40px;
 }
 .register-container{
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
@@ -46,6 +46,7 @@ h1{
     bottom: 300px;
     left: 0;
     right: 0;
+    color: white;
 }
 .request-container{
     background-color: white;
