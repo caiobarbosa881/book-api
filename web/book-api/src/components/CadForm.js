@@ -8,7 +8,6 @@ function CadForm() {
   const [livro, setLivro] = useState();
   const [form, setForm] = useState("form-container scalex-zero");
   const [input, setInput] = useState();
-
   const inputValue = document.getElementById("inputName");
 
 useEffect(() =>{
@@ -24,10 +23,12 @@ useEffect(() =>{
     axios
     .get("http://localhost:5000/")
     .then((response) => {
-      console.log(Array.from(response.data))
-      let bookData = response.data
-      
-      setLivro(response.data);
+      console.log(response.data[0].name)
+      for(var i= 0; i < response.data.length; i++){
+        if(response.data[i].name === inputValue.value){
+          setLivro(inputValue.value);
+        }
+      }
     })
   }
 

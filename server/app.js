@@ -4,8 +4,10 @@ const app = express();
 app.use(cors())
 
 const db = [
-  { name: "ronaldo"},
-  { name: "cleber"}
+  { name: "Harry Potter"},
+  { name: "O Senhor dos Anéis"},
+  { name: "Star Wars"},
+  { name: ""}
 ];
 
 app.get("/", function(req, res) {
