@@ -36,6 +36,11 @@ useEffect(() =>{
           setData(response.data[i].data);
         }
       }
+      if(inputValue.value === "") {
+      setLivro("Nenhum livro foi encontrado")
+      setAutor("")
+      setData("")
+      }
     })
     setList("list-container scalex-zero");
   }
