@@ -5,12 +5,11 @@ import axios from 'axios';
 
 function CadForm() {
 
-  const [livro, setLivro] = useState();
-  const [autor, setAutor] = useState();
-  const [data, setData] = useState();
+  const [livro, setLivro] = useState("");
+  const [autor, setAutor] = useState("");
+  const [data, setData] = useState("");
   const [form, setForm] = useState("form-container scalex-zero");
-  const [input, setInput] = useState();
-  const inputValue = document.getElementById("inputName");
+  const [input, setInput] = useState("");
   const [list, setList] = useState("list-container scalex-zero");
 
 useEffect(() =>{
@@ -21,19 +20,18 @@ useEffect(() =>{
   setList("list-container scalex-full");
 }, [list]);
 
-  const handleInput = event => {
+  const handleInput = (event: any) => {
     setInput(event.target.value);
   }
   
   function getValues() {
-    setLivro()
+    setLivro("")
     axios
     .get("http://localhost:5000/")
     .then((response) => {
       for(var i= 0; i < response.data.length; i++){
         var a = response.data[i].name.toUpperCase();
-        var b = inputValue.value.toUpperCase();
-        console.log(b);
+        var b = input.toUpperCase();
         if( a === b ){
           setLivro(b);
           setAutor(response.data[i].author);
@@ -41,7 +39,7 @@ useEffect(() =>{
         }
       } 
     })
-    if(inputValue.value !== livro) {
+    if(input !== livro) {
       setLivro("Nenhum livro foi encontrado")
       setAutor("")
       setData("")
