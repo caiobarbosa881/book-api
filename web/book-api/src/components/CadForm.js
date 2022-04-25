@@ -31,8 +31,11 @@ useEffect(() =>{
     .get("http://localhost:5000/")
     .then((response) => {
       for(var i= 0; i < response.data.length; i++){
-        if(response.data[i].name === inputValue.value){
-          setLivro(inputValue.value);
+        var a = response.data[i].name.toUpperCase();
+        var b = inputValue.value.toUpperCase();
+        console.log(b);
+        if( a === b ){
+          setLivro(b);
           setAutor(response.data[i].author);
           setData(response.data[i].data);
         }
