@@ -1,5 +1,5 @@
 import React from 'react'
-import './CadForm.css'
+import './CadForm.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -24,8 +24,9 @@ useEffect(() =>{
   const handleInput = event => {
     setInput(event.target.value);
   }
-
+  
   function getValues() {
+    setLivro()
     axios
     .get("http://localhost:5000/")
     .then((response) => {
@@ -35,13 +36,13 @@ useEffect(() =>{
           setAutor(response.data[i].author);
           setData(response.data[i].data);
         }
-      }
-      if(inputValue.value === "") {
+      } 
+    })
+    if(inputValue.value !== livro) {
       setLivro("Nenhum livro foi encontrado")
       setAutor("")
       setData("")
       }
-    })
     setList("list-container scalex-zero");
   }
 
