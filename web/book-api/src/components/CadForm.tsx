@@ -39,7 +39,12 @@ useEffect(() =>{
         }
       } 
     })
-    if(input !== livro) {
+    if(input === "")  {
+      setLivro("Lembre-se de digitar o nome abaixo")
+      setAutor("")
+      setData("")
+      }
+    if(input !== livro)  {
       setLivro("Nenhum livro foi encontrado")
       setAutor("")
       setData("")
