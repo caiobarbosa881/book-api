@@ -10,6 +10,7 @@
     left: 0;
     right: 0;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    text-align: center;
 }
 .form-container:hover{
     transform: scale(1.05);
@@ -52,6 +53,7 @@ h3{
     color: white;
     padding-right: 5px;
     padding-left: 5px;
+    text-align: center;
 }
 .list-container:hover{
     transform: scale(1.1);
