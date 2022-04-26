@@ -39,6 +39,13 @@ useEffect(() =>{
         }
       } 
     })
+    .catch(function (error) {
+      if(error.request){
+        setLivro("Infelizmente não há conexão com o sistema de livros no momento")
+        setAutor("")
+        setData("")
+      }
+    })
     if(input === "")  {
       setLivro("Lembre-se de digitar o nome abaixo")
       setAutor("")
