@@ -10,20 +10,20 @@ function CadForm() {
   const [data, setData] = useState("");
   const [form, setForm] = useState("form-container scalex-zero");
   const [input, setInput] = useState("");
-  const [list, setList] = useState("list-container scalex-zero");
+  const [list, setList] = useState("list-container scaley-zero");
 
 useEffect(() =>{
   setForm("form-container scalex-full");
 }, [form]);
 
 useEffect(() =>{
-  setList("list-container scalex-full");
+  setList("list-container scaley-full");
 }, [list]);
 
   const handleInput = (event: any) => {
     setInput(event.target.value);
   }
-  
+
   function getValues() {
     setLivro("")
     axios
@@ -56,7 +56,7 @@ useEffect(() =>{
       setAutor("")
       setData("")
       }
-    setList("list-container scalex-zero");
+    setList("list-container scaley-zero");
   }
 
   return (
@@ -71,7 +71,7 @@ useEffect(() =>{
     <div className={form}>
         <h3 className='mt-3'>Consultar Livros</h3>
         <input onChange={handleInput} id="inputName"></input>
-        <button type="button" onClick={getValues} className="btn btn-primary mt-3 request-button">Consultar</button>
+        <button type="button" onClick={getValues} className="btn mt-3 request-button">Consultar</button>
     </div>
     </>  
   )

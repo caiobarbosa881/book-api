@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
 .form-container{
-    background-color: #156F6C;
+    background-color: #F6FAF9;
     height: 180px;
-    width: 400px;
+    width: 350px;
     border-radius: 8px;
     margin: auto;
     position: absolute;
@@ -31,33 +33,33 @@
     height: 50px;
     margin: auto;
     font-size: 14px;
+    border: 1px solid #000;
 }
 h3{
-    color: white;
+    color: #202B27;
 }
 .book-name{
     font-size: 40px;
 }
 .list-container{
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    background-color: #156F6C;
+    background-color: #F6FAF9;
     height: 270px;
     width: 350px;
     border-radius: 8px;
     margin: auto;
     position: absolute;
-    top:0;
+    top:-400px;
     bottom: 300px;
     left: 0;
     right: 0;
-    color: white;
+    color: black;
     padding-right: 5px;
     padding-left: 5px;
     text-align: center;
+    font-family: 'Open Sans', sans-serif;
 }
-.list-container:hover{
-    transform: scale(1.1);
-}
+
 .request-container{
     background-color: white;
 }
@@ -66,6 +68,8 @@ h3{
     width: 220px;
     height: 40px;
     font-weight: bolder;
+    background-color: #85C6AE;
+    color: #F9FCF9;
 }
 .request-input{
     text-align: center;
@@ -87,6 +91,31 @@ h3{
     transform: scaleX(1);
     transition-duration: 0.5s;
 }
+.scaley-zero{
+    transform: scaleY(0) translateY(60%);
+}
+.scaley-full{
+    transform: scale(1) translateY(60%);
+    transition-duration: 0.5s;
+}
+@keyframes animation-list {
+    0% {
+        background-color: #001F3F;
+    }
+    25% {
+
+    }
+    50% {
+
+    }
+    75% {
+
+    }
+    100% {
+        background-color: #FF4136;
+    }
+  }
+  
 #inputName{
     text-align: center;
     border-radius: 10px;
