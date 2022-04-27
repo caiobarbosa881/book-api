@@ -1,19 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { BookContext } from '../providers/BookProvider';
 import "./List.css";
 
 function List() {
 
-  const { list, livro, autor, data, form, input } = React.useContext(BookContext);
-  const [listValue, setList] = list;
-  const [livroValue, setLivro] = livro;
-  const [autorValue, setAutor] = autor;
-  const [dataValue, setData] = data;
-  const [formValue, setForm] = form;
-  const [inputValue, setInput] = input;
-
+  const { state: { list, livro, autor, data, form, input }, dispatch } = useContext(BookContext);
+  
     useEffect(() =>{
-        setList("list-container scaley-full");
+        dispatch({ type: 'SETLISTFULL'})
       }, [list]);
 
   return (

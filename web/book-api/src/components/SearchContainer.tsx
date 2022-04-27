@@ -1,28 +1,28 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext} from 'react'
 import './SearchContainer.css';
 import axios from 'axios';
 import { BookContext } from '../providers/BookProvider';
+import { BookReducer } from '../BookReducer';
 
 function SearchContainer() {
 
-  const { list, livro, autor, data, form, input } = React.useContext(BookContext);
-  const [listValue, setList] = list;
-  const [livroValue, setLivro] = livro;
-  const [autorValue, setAutor] = autor;
-  const [dataValue, setData] = data;
-  const [formValue, setForm] = form;
-  const [inputValue, setInput] = input;
+  const  { list, livro, autor, data, form, input } = useContext(BookContext);
+
+  const handleChangeInput = (event: any) => {
+    dispatch({ input: event.target.value });
+  }
+
 
     useEffect(() =>{
-        setForm("form-container scalex-full");
+        dispatch({ type: 'SETFULLFORM'});
       }, [form]);
 
     const handleInput = (event: any) => {
-        setInput(event.target.value);
+        handleChangeInput(event.target.value);
       }
 
       function getValues() {
-        setLivro("")
+        dispatch({ type: 'SETEMPTYLIVRO'})
         axios
         .get("http://localhost:5000/")
         .then((response) => {
@@ -30,30 +30,30 @@ function SearchContainer() {
             var a = response.data[i].name.toUpperCase();
             var b = input.toUpperCase();
             if( a === b ){
-              setLivro(b);
-              setAutor(response.data[i].author);
-              setData(response.data[i].data);
+              dispatch({ livro: b });
+              dispatch({ autor: response.data[i].author});
+              dispatch({ data: response.data[i].data});
             }
           } 
         })
         .catch(function (error) {
           if(error.request){
-            setLivro("Infelizmente não há conexão com o sistema de livros no momento")
-            setAutor("")
-            setData("")
+            dispatch({ type: 'SETNOCONNECTION'})
+            dispatch({ type: 'SETEMPTYAUTOR'}) 
+            dispatch({ type: 'SETEMPTYDATA'}) 
           }
         })
         if(input === "")  {
-          setLivro("Lembre-se de digitar o nome abaixo")
-          setAutor("")
-          setData("")
+          dispatch({ type: 'SETREMBEMBER'})
+          dispatch({ type: 'SETEMPTYAUTOR'}) 
+          dispatch({ type: 'SETEMPTYDATA'}) 
           }
         if(input !== livro)  {
-          setLivro("Nenhum livro foi encontrado")
-          setAutor("")
-          setData("")
+          dispatch({ type: 'SETCANTFOUND'})
+          dispatch({ type: 'SETEMPTYAUTOR'}) 
+          dispatch({ type: 'SETEMPTYDATA'}) 
           }
-        setList("list-container scaley-zero");
+        dispatch({ type: 'SETLISTZERO'});
       }
 
   return (
