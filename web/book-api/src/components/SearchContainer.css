@@ -1,0 +1,47 @@
+.form-container{
+    background-color: #F6FAF9;
+    height: 180px;
+    width: 350px;
+    border-radius: 8px;
+    margin: auto;
+    position: absolute;
+    top: 230px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    text-align: center;
+}
+.form-container:hover{
+    transform: scale(1.05);
+}
+.scalex-zero{
+    transform:scaleX(0);
+}
+.scalex-full{
+    transform: scaleX(1);
+    transition-duration: 0.5s;
+}
+.scaley-zero{
+    transform: scaleY(0) translateY(60%);
+}
+.scaley-full{
+    transform: scale(1) translateY(60%);
+    transition-duration: 0.5s;
+}
+#inputName{
+    text-align: center;
+    border-radius: 10px;
+    border-style: none;
+    height: 40px;
+    width: 280px;
+    outline: none;
+}
+.request-button{
+    border-radius: 30px;
+    width: 220px;
+    height: 40px;
+    font-weight: bolder;
+    background-color: #85C6AE;
+    color: #F9FCF9;
+}
