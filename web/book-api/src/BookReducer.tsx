@@ -1,7 +1,6 @@
 import { IAction, IState } from "./providers/BookProvider";
 
 export const BookReducer = (state: IState, action: IAction) => {
-  console.log(state, action);
   switch(action.type){
               case 'SETFULLFORM':
               return{
