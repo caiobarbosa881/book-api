@@ -1,15 +1,15 @@
 import React from 'react';
 import List from './components/List';
 import SearchContainer from './components/SearchContainer';
-import { BookProvider } from './providers/BookProvider';
+import GlobalContext from './GlobalContext';
 
-function App() {
+export const App: React.FC = () => {
   return (
         <>
-        <BookProvider>
+        <GlobalContext>
           <List/>
           <SearchContainer/>
-        </BookProvider>
+        </GlobalContext>
         </>
   );
 }

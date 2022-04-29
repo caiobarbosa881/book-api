@@ -1,20 +1,59 @@
-import React, { useEffect, useContext} from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './SearchContainer.css';
 import axios from 'axios';
-import { BookContext } from '../providers/BookProvider';
-import { BookReducer } from '../BookReducer';
+import UserContext from '../context';
 
 function SearchContainer() {
 
-  const  { list, livro, autor, data, form, input } = useContext(BookContext);
+  const { setState, state } = useContext(UserContext)
 
-  const handleChangeInput = (event: any) => {
-    dispatch({ input: event.target.value });
+  const [list, setList] = useState<string>('list-container scaley-zero');
+  const [livro, setLivro] = useState<string>('');
+  const [autor, setAutor] = useState<string>('');
+  const [data, setData] = useState<string>('');
+  const [form, setForm] = useState<string>('form-container scalex-zero');
+  const [input, setInput] = useState<string>('');
+
+  function handleChangeList(){
+    setState({
+      ...state,
+      list: list,
+    })
   }
 
+  function handleChangeLivro(){
+    setState({
+      ...state,
+      livro: livro,
+    })
+  }
 
+  function handleChangeAutor(){
+    setState({
+      ...state,
+      autor: autor,
+    })
+  }
+
+  function handleChangeData(){
+    setState({
+      ...state,
+      data: data,
+    })
+  }
+
+   function handleChangeForm(){
+    setState({
+      ...state,
+      form: form,
+    })
+  }
+
+  const handleChangeInput = (event: any) => {
+    setInput(event.target.value);
+  }
     useEffect(() =>{
-        dispatch({ type: 'SETFULLFORM'});
+        setForm("form-container scalex-full");
       }, [form]);
 
     const handleInput = (event: any) => {
@@ -22,7 +61,7 @@ function SearchContainer() {
       }
 
       function getValues() {
-        dispatch({ type: 'SETEMPTYLIVRO'})
+        setLivro("");
         axios
         .get("http://localhost:5000/")
         .then((response) => {
@@ -30,30 +69,30 @@ function SearchContainer() {
             var a = response.data[i].name.toUpperCase();
             var b = input.toUpperCase();
             if( a === b ){
-              dispatch({ livro: b });
-              dispatch({ autor: response.data[i].author});
-              dispatch({ data: response.data[i].data});
+              setLivro(b)
+              setAutor(response.data[i].author);
+              setData(response.data[i].data);
             }
           } 
         })
         .catch(function (error) {
           if(error.request){
-            dispatch({ type: 'SETNOCONNECTION'})
-            dispatch({ type: 'SETEMPTYAUTOR'}) 
-            dispatch({ type: 'SETEMPTYDATA'}) 
+            setLivro("Infelizmente não há conexão com o sistema de livros no momento");
+            setAutor("");
+            setData("");
           }
         })
         if(input === "")  {
-          dispatch({ type: 'SETREMBEMBER'})
-          dispatch({ type: 'SETEMPTYAUTOR'}) 
-          dispatch({ type: 'SETEMPTYDATA'}) 
+          setLivro("Lembre-se de digitar o nome abaixo");
+          setAutor("");
+          setData("");
           }
         if(input !== livro)  {
-          dispatch({ type: 'SETCANTFOUND'})
-          dispatch({ type: 'SETEMPTYAUTOR'}) 
-          dispatch({ type: 'SETEMPTYDATA'}) 
+          setLivro("Nenhum Livro foi Encontrado");
+          setAutor("");
+          setData("");
           }
-        dispatch({ type: 'SETLISTZERO'});
+        setList("list-container scaley-zero");
       }
 
   return (
