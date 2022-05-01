@@ -1,15 +1,16 @@
 import React from 'react';
 import List from './components/List';
 import SearchContainer from './components/SearchContainer';
-import GlobalContext from './GlobalContext';
+import { Provider } from 'react-redux';
+import { store } from './redux/store'
 
 export const App: React.FC = () => {
   return (
         <>
-        <GlobalContext>
+        <Provider store={store}>
           <List/>
           <SearchContainer/>
-        </GlobalContext>
+        </Provider>
         </>
   );
 }
