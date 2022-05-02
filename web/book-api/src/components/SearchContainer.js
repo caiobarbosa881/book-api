@@ -56,6 +56,7 @@ function SearchContainer() {
           setData("");
           }
         setList("list-container scalex-zero");
+        setForm("form-container scalex-zero");
       }
 
   return (  
